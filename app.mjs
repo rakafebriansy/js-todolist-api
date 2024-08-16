@@ -9,6 +9,9 @@ const server = http.createServer((request, response) => {
     } else if (request.method == 'POST') {
         response.setHeader('Content-Type','application/json');
         service.createTodo(request, response);
+    } else if (request.method == 'PUT') {
+        response.setHeader('Content-Type','application/json');
+        service.updateTodo(request, response);
     }
 
 });
