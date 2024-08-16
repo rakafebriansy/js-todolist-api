@@ -40,4 +40,19 @@ export class TodolistService {
             response.end();
         });
     }
+
+    deleteTodo(request, response) {
+        request.addListener('data', (data) => {
+            const body = JSON.parse(data.toString());
+            let code = 400;
+            if(this.todolist[body.id]) {
+                this.todolist.splice(body.id,1);
+                code = 204;
+            }
+
+            response.write(JSON.stringify({
+                code: code}));
+            response.end();
+        });
+    }
 }
