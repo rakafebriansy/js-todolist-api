@@ -6,9 +6,11 @@ const server = http.createServer((request, response) => {
     if(request.method == 'GET') {
         response.setHeader('Content-Type','application/json');
         service.getTodolist(request, response);
+    } else if (request.method == 'POST') {
+        response.setHeader('Content-Type','application/json');
+        service.createTodo(request, response);
     }
 
-    response.end();
 });
 
 server.listen(3000);
